@@ -5,10 +5,21 @@ summary: text
 description: text
 
 - name must be present
-- name must be between 5-50 char
+- name must be between 5 characters and less than 100 characters
 - summary must be present
-- summary  must be between 10-150 char
+- summary must be between 10 characters and less than 150 characters
 - description must be present
-- description must be between 20 and 500 char
-- chef_id must be present
+- description must be between 20 and 500 characters
+- chef_if must be present
 
+
+testing  specs for chefs:
+
+chefname: string
+email: email
+
+- chefname must be present
+- chefname must be between 3 characters and less than 40 characters
+- email must be present
+- email must be unique
+- email must be valid
