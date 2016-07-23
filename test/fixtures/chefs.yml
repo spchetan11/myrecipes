@@ -2,12 +2,12 @@
 
 one:
   chefname: MyString
-  : MyString
+  
   email: MyString
-  : MyString
+  
 
 two:
   chefname: MyString
-  : MyString
+  
   email: MyString
-  : MyString
+  
