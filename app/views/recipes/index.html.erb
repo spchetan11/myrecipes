@@ -1,5 +1,4 @@
 <%=render 'shared/page_title', title: "All Recipes"%>
-<hr/>
 
 
 <%@recipes.each do |recipe| %>
@@ -7,7 +6,7 @@
      <div class="col-md-2">
        <section class="chef_info_center">
        <!-- this method is in application_helper.rb -->
-        <%=gravatar_for recipe.chef, size: 100%>
+        <%=link_to (gravatar_for recipe.chef, size: 100), chef_path(recipe.chef)%>
         <h5>Chef Name: <%=recipe.chef.chefname%></h5>
        </section>
      </div>  
