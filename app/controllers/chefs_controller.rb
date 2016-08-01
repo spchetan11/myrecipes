@@ -1,5 +1,7 @@
 class ChefsController < ApplicationController
 
+    before_action :require_same_user, only: [:edit, :update]
+
     def index
         @chefs = Chef.paginate(page: params[:page], per_page: 5)
     end
@@ -18,7 +20,7 @@ class ChefsController < ApplicationController
 		@chef = Chef.new(chef_params)
 		if @chef.save
 			flash[:success] = "Your account has been created successfully"
-			redirect_to recipes_path
+			redirect_to chef_path(@chef)
 		else
 			render 'new'
 		end
@@ -42,6 +44,12 @@ class ChefsController < ApplicationController
 
     def chef_params
     	params.require(:chef).permit(:chefname, :email, :password)
-    	
+    end
+
+    def require_same_user
+        if current_user != @chef
+            flash[:danger]="Your can only edit your own profile"
+            redirect_to recipes_path
+        end
     end
 end
